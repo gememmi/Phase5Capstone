@@ -1,12 +1,21 @@
 class EntriesController < ApplicationController
-    skip_before_action :authorize, only: [:index] 
+    
 
     def index 
-        render json: Entry.all
+        render json: @current_user.entries.all
+    end
+
+    def show
+        entries = @current_user.entries.find(id: session[:user_id])
+        render json: entries, status: :success
     end
 
     def create 
-        newEntry = Entry.create!(entry_params)
+        mood_rating = MoodRating.find_by(score: params[:score])
+        newEntry = @current_user.entries.create!(entry_params.merge(mood_rating_id: mood_rating.id))
+        # newEntry = @current_user.entries.create!(entry_params.merge(:user_id => user.id))
+        # byebug;
+        render json: newEntry, status: :created
     end
 
     def update
@@ -24,6 +33,6 @@ class EntriesController < ApplicationController
     private
 
     def entry_params
-        params.permit(:title, :content)
+        params.permit(:title, :content, :user_id, :mood_rating_id)
     end
 end

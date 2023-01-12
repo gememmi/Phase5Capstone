@@ -1,13 +1,14 @@
 import { useState } from 'react'
 
-function SignupForm({setUser}){
+
+function SignupForm({setUser, user }){
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const [phone, setPhone] = useState('')
-    const [symbol, setSymbol] = useState('')
     const [errors, setErrors] = useState('')
+    const [avatar, setAvatar] = useState('')
 
 function handleSubmit(e){
     e.preventDefault();
@@ -20,10 +21,10 @@ function handleSubmit(e){
         body: JSON.stringify({
             username,
             password,
-            passwordConfirm: passwordConfirm,
+            password_confirmation: passwordConfirm,
             email,
-            phone,
-
+            phone_num: phone,
+            // avatar
         }),
     }).then((r) => {
       if (r.ok) {
@@ -50,14 +51,15 @@ function handleSubmit(e){
         
         </div>
         <br/>
-        <select>
-        <option></option>
-        <option></option>
-        <option></option>
-        <option></option>
-        <option></option>
-        <option></option>
-        </select>
+        
+     {/* <div>
+        <button value={avatar} name="cloud">Cloud</button>
+        <button value={avatar} name="thunder">Thunder</button>
+        <button value={avatar} name="rainbow">Rainbow</button>
+        <button value={avatar} name="sun">Sun</button>
+        <button value={avatar} name="moon">Shooting Star</button>
+
+     </div> */}
         </div>
         
     )

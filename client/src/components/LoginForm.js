@@ -1,7 +1,9 @@
 import { useState} from 'react';
 
 
-function LoginForm({setUser}){
+
+
+function LoginForm({setUser, user}){
  const [username, setUsername] = useState('')
  const [password, setPassword] = useState('')
  const [errors, setErrors] = useState('') 
@@ -26,6 +28,8 @@ function LoginForm({setUser}){
  }
 
 
+
+
  return(
     <div className="login-screen">
         <h1>LOG IN</h1>
@@ -37,6 +41,7 @@ function LoginForm({setUser}){
         <button type="submit">LOG IN</button>
     </form>
     </div>
+
     </div>
  )
 
