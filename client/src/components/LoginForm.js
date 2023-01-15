@@ -1,4 +1,5 @@
 import { useState} from 'react';
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -7,6 +8,7 @@ function LoginForm({setUser, user}){
  const [username, setUsername] = useState('')
  const [password, setPassword] = useState('')
  const [errors, setErrors] = useState('') 
+ const navigate = useNavigate();
 
 
  function handleSubmit(e){
@@ -19,7 +21,11 @@ function LoginForm({setUser, user}){
         body: JSON.stringify({username, password})
     }).then((r) => {
         if(r.ok){
-            r.json().then((data) => setUser(data));
+            r.json().then((data) => {
+                setUser(data)
+                navigate("/me")
+            });
+                
         } else {
             r.json().then((data) => setErrors(data.errors));
             console.log(errors)

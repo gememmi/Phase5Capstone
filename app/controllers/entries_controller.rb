@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
 
     def show
         entries = @current_user.entries.find(id: session[:user_id])
-        render json: entries, status: :success
+        render json: entries
     end
 
     def create 

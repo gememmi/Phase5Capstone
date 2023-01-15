@@ -46,20 +46,15 @@ function handleSubmit(e){
         <input type="text" placeholder="Password-Confirmation"required value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)}/>
         <input type="text" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)}/>
         <input type="text" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)}/>
-        <button type="submit">Submit</button>
-        </form>
-        
-        </div>
-        <br/>
-        
-     {/* <div>
         <button value={avatar} name="cloud">Cloud</button>
         <button value={avatar} name="thunder">Thunder</button>
         <button value={avatar} name="rainbow">Rainbow</button>
         <button value={avatar} name="sun">Sun</button>
         <button value={avatar} name="moon">Shooting Star</button>
+        <button type="submit">Submit</button>
+        </form>
+        </div>
 
-     </div> */}
         </div>
         
     )

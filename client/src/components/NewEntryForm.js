@@ -12,14 +12,6 @@ let newMoodEntry = {
     score: mood
 }
 
-// let newMoodEntry ={
-//     title: "",
-//     content: "",
-//     user_id: user.id,
-//     mood_rating_id: 1,
-//    };
-//    const [logEntry, setLogEntry] = useState(newMoodEntry)
-// console.log("newmoodentry: ", newMoodEntry)
     function handleSubmit(e){
         e.preventDefault();
         fetch('/entries', {
@@ -34,7 +26,8 @@ let newMoodEntry = {
        setContent('');
     }
     
-  console.log(title)
+//   console.log(title)
+  let userEntries = user.entries
 
 
    
@@ -55,6 +48,19 @@ let newMoodEntry = {
                     <option value="5">5</option>
                 </select>
             </form>
+            <div className="my-entries">
+            {userEntries.map((entry) => {
+              return(
+                <>
+                <h3>{entry.title}</h3>
+                <p>{entry.content}</p>
+                </>
+              )
+            }
+
+            )}
+            </div>
         </div>
+        
     )
 }
