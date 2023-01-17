@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
 
-function Header({ setUser, user }){
+function Header({ setUser, user, moodData, setMoodData}){
   const navigate = useNavigate();
     
   function handleLogoutClick() {
@@ -23,7 +23,7 @@ function Header({ setUser, user }){
             <NavLink className="nav-link" to="/new-entry" user={user} end>
               <button>New Entry</button>
             </NavLink>
-            <NavLink className="nav-link" to="/graph" end>
+            <NavLink className="nav-link" to="/graph" moodData ={moodData} setMoodData={setMoodData} end>
               <button>My Mood Graph</button>
             </NavLink>
             <NavLink className="nav-link" to="/intentions">

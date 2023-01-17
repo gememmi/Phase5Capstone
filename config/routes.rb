@@ -12,12 +12,13 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
+  
   post '/me/entries', to: "entries#create"
   get '/affirmations', to: "affirmations#affirmations"
   get '/me/intentions', to: "intentions#show"
+
   
 
-  # attempting to make a post to users intentions\
   
 
 end

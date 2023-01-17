@@ -6,15 +6,17 @@ class EntriesController < ApplicationController
     end
 
     def show
-        entries = @current_user.entries.find(id: session[:user_id])
+        entries = @current_user.entries
         render json: entries
     end
 
     def create 
         mood_rating = MoodRating.find_by(score: params[:score])
-        newEntry = @current_user.entries.create!(entry_params.merge(mood_rating_id: mood_rating.id))
-        # newEntry = @current_user.entries.create!(entry_params.merge(:user_id => user.id))
         # byebug;
+        newEntry = Entry.create!(entry_params.merge(mood_rating_id: mood_rating.id))
+        # newEntry = @current_user.entries.create!(entry_params.merge(mood_rating_id: mood_rating.id))
+        # newEntry = @current_user.entries.create!(entry_params.merge(:user_id => user.id))
+       
         render json: newEntry, status: :created
     end
 

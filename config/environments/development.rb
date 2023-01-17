@@ -50,7 +50,26 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
-
+  # ACTIONMAILER
+  config.action_mailer.delivery_method = :sendmail
+# Defaults to:
+# config.action_mailer.sendmail_settings = {
+#   location: '/usr/sbin/sendmail',
+#   arguments: '-i'
+# }
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default_options = {from: 'thisisstarbrightapp@gmail.com'}
+# MORE ACTIONMAILER STUFF FOR GMAIL SPECIFIC
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+address:              'smtp.gmail.com',
+port:                 587,
+domain:               'thisisstarbrightapp@gmail.com',
+user_name:            '<thisisstarbrightapp>',
+password:             '<Gabby21!>',
+authentication:       'plain',
+enable_starttls_auto: true  }
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 

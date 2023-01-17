@@ -9,7 +9,7 @@ const [mood, setMood] = useState('1')
 let newMoodEntry = {
     title: title,
     content: content,
-    score: mood
+    score: mood,
 }
 
     function handleSubmit(e){
@@ -28,6 +28,7 @@ let newMoodEntry = {
     
 //   console.log(title)
   let userEntries = user.entries
+  
 
 
    

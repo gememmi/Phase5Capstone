@@ -1,5 +1,5 @@
 class MoodRatingSerializer < ActiveModel::Serializer
-  attributes :score
+  attributes :score, :id
 
   has_many :entries
   has_many :users, through: :entries

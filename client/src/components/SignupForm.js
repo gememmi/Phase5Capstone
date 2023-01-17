@@ -24,7 +24,7 @@ function handleSubmit(e){
             password_confirmation: passwordConfirm,
             email,
             phone_num: phone,
-            // avatar
+            avatar: avatar
         }),
     }).then((r) => {
       if (r.ok) {
@@ -35,6 +35,7 @@ function handleSubmit(e){
       }
     });
 }
+console.log(avatar)
 
     return (
         <div className="sigup-screen">
@@ -46,11 +47,19 @@ function handleSubmit(e){
         <input type="text" placeholder="Password-Confirmation"required value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)}/>
         <input type="text" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)}/>
         <input type="text" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)}/>
-        <button value={avatar} name="cloud">Cloud</button>
-        <button value={avatar} name="thunder">Thunder</button>
-        <button value={avatar} name="rainbow">Rainbow</button>
-        <button value={avatar} name="sun">Sun</button>
-        <button value={avatar} name="moon">Shooting Star</button>
+        <select  value={avatar} label="avatar" onChange={(e)=> setAvatar(e.target.value)}>
+            <option value="cloud">Cloud</option>
+            <option value="Thunder">Thunder</option>
+            <option value="Rainbow">Rainbow</option>
+            <option value="Sun">Sun</option>
+            <option value="Moon">Moon</option>
+        </select>
+        {/* TRIED TO DO BUTTOSN BUT THEY DIDNT WORK :/ */}
+        {/* <button value={avatar} onChange={(e) => setAvatar(e.target.value)} name="cloud">Cloud</button>
+        <button value={avatar} onChange={(e) => setAvatar(e.target.value)} name="thunder">Thunder</button>
+        <button value={avatar} onChange={(e) => setAvatar(e.target.value)} name="rainbow">Rainbow</button>
+        <button value={avatar} onChange={(e) => setAvatar(e.target.value)} name="sun">Sun</button>
+        <button value={avatar} onChange={(e) => setAvatar(e.target.value)} name="moon">Shooting Star</button> */}
         <button type="submit">Submit</button>
         </form>
         </div>

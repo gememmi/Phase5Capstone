@@ -15,16 +15,8 @@ function App() {
   const [entries, setEntries] = useState([])
   const [affirmation, setAffirmation] = useState("")
   const [intentions, setIntentions] = useState([])
+  const [moodData, setMoodData] = useState([])
  
-
-  
- 
-
-  // useEffect(()=>{
-  //   fetch("https://www.affirmations.dev/")
-  //   .then((r) => r.json())
-  //   .then((data) => console.log(data))
-  // },[])
 
   useEffect(() => {
     fetch("/affirmations")
@@ -32,22 +24,29 @@ function App() {
     .then(data => setAffirmation(data.affirmation))
   },[])
 
-
+  useEffect(() => {
+    fetch("/mood_ratings").then((r) => {
+      if(r.ok) {
+        r.json().then((data) => setMoodData(data));
+      }
+    })
+  },[])
  
 
   useEffect(() => {
-    fetch("/entries")
+    fetch("/me/entries")
       .then((r) => r.json())
       .then((data) => setEntries(data));
   }, []);
+  // console.log(entries)
   
   
   useEffect(() => {
-    fetch("/me/intentions")
+    fetch("me/intentions")
       .then((r) => r.json())
       .then((data) => setIntentions(data));
   }, []);
-console.log(intentions)
+
 
 
   useEffect(() => {
@@ -57,6 +56,7 @@ console.log(intentions)
       }
     })
   },[])
+  console.log(user)
   
   if (!user) return <Login setUser={setUser} user={user} />;
 
@@ -70,7 +70,7 @@ console.log(intentions)
 
   return (
     <div className='App'>
-      <Header setUser={setUser} user={user}/>
+      <Header setUser={setUser} user={user} moodData={moodData} setMoodData={setMoodData}/>
       {affirmation}
       <Routes>
         <Route path="/intentions" element={<IntentionsForm user={user} intentions={intentions} setIntentions={setIntentions}/>} />
