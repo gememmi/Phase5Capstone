@@ -31,14 +31,16 @@ function App() {
       }
     })
   },[])
- 
+ console.log(moodData)
+
 
   useEffect(() => {
-    fetch("/me/entries")
+    fetch("/entries")
       .then((r) => r.json())
       .then((data) => setEntries(data));
   }, []);
   // console.log(entries)
+  // console.log(user)
   
   
   useEffect(() => {
@@ -56,17 +58,11 @@ function App() {
       }
     })
   },[])
-  console.log(user)
+
   
   if (!user) return <Login setUser={setUser} user={user} />;
 
   
-
-
-  
-  
-
-
 
   return (
     <div className='App'>
@@ -74,7 +70,7 @@ function App() {
       {affirmation}
       <Routes>
         <Route path="/intentions" element={<IntentionsForm user={user} intentions={intentions} setIntentions={setIntentions}/>} />
-        <Route path="/graph" element={<Graph/>}/>
+        <Route path="/graph" element={<Graph moodData={moodData} setMoodData={setMoodData}/>}/>
         <Route path="/new-entry" element={<NewEntryForm user={user} entries={entries} setEntries={setEntries}/>} />
       </Routes>
 

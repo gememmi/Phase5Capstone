@@ -1,18 +1,21 @@
 class MoodRatingsController < ApplicationController
-    # skip_before_action :authorize, only: [:index]
+    skip_before_action :authorize, only: [:create,:show]
 
     def index
-        render json: MoodRating.all 
+        moods = @current_user.mood_ratings.all
+        render json: moods
     end
 
     def show
         mood = MoodRating.find(id: params[:id])
         render json: mood
+    
     end
 
     def create
-       newMood = @current_user.mood_ratings.create!(mood_rating_params)
-       render json: newMood, status: :created
+    #    newMood = @current_user.mood_ratings.create!(mood_rating_params)
+    newMood = MoodRating.create!(mood_rating_params)
+    render json: newMood, status: :created
     end
 
     def update 

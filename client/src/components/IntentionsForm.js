@@ -32,7 +32,7 @@ function clear(){
 
  
 
-console.log(intentions)
+
 
 
 

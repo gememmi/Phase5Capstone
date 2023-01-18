@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-    
+    skip_before_action :authorize, only: [:create]
 
     def index 
         render json: @current_user.entries.all
@@ -11,7 +11,8 @@ class EntriesController < ApplicationController
     end
 
     def create 
-        mood_rating = MoodRating.find_by(score: params[:score])
+        user = @current_user
+        mood_rating = MoodRating.create!(score: params[:score])
         # byebug;
         newEntry = Entry.create!(entry_params.merge(mood_rating_id: mood_rating.id))
         # newEntry = @current_user.entries.create!(entry_params.merge(mood_rating_id: mood_rating.id))
@@ -21,13 +22,13 @@ class EntriesController < ApplicationController
     end
 
     def update
-        entry = Entry.find_by(id: params[:id])
+        entry = @current_user.entries.find(params[:id])
         entry.update(entry_params)
         render json: entry, status: :updated
     end
 
     def destroy
-        entry = Entry.find_by(id: params[:id])
+        entry = @current_user.entries.find(params[:id])
         entry.destroy
         head :no_content
     end
@@ -35,6 +36,6 @@ class EntriesController < ApplicationController
     private
 
     def entry_params
-        params.permit(:title, :content, :user_id, :mood_rating_id)
+        params.permit(:title, :content, :user_id, :mood_rating_id )
     end
 end

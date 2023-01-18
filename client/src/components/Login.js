@@ -8,7 +8,7 @@ const [showLogin, setShowLogin]= useState(true)
 
 
     return(
-      <div classNaame= "login">
+      <div className= "login">
         <div className="title">
         <h1>Star Bright</h1>
         </div>

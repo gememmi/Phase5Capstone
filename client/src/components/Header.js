@@ -23,7 +23,7 @@ function Header({ setUser, user, moodData, setMoodData}){
             <NavLink className="nav-link" to="/new-entry" user={user} end>
               <button>New Entry</button>
             </NavLink>
-            <NavLink className="nav-link" to="/graph" moodData ={moodData} setMoodData={setMoodData} end>
+            <NavLink className="nav-link" to="/graph" end>
               <button>My Mood Graph</button>
             </NavLink>
             <NavLink className="nav-link" to="/intentions">

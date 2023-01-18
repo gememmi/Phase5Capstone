@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 export default function IntentionCard({user, intentions, setIntentions, intent}){
   const [ showInput, setShowInput] = useState(true)
@@ -36,7 +36,11 @@ return (
     <button onClick={handleDelete}>Delete</button> 
     </>  :
   <form onSubmit={handlePatch}>
-    <input type="type" placeholder="Edit Intention" value={edit} onChange={(e) => setEdit(e.target.value)}></input>
+    <input type="type"
+     placeholder="Edit Intention" 
+     value={edit} 
+     onChange={(e) => setEdit(e.target.value)}
+     />
     <button type="submit">Edit</button>
 </form> }
 </div>

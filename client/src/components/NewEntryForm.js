@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import EntryCard from './EntryCard';
 
 
 export default function NewFormEntry({user, entries, setEntries}){
@@ -6,15 +7,19 @@ const [title, setTitle] = useState('')
 const [content, setContent] = useState('')
 const [mood, setMood] = useState('1')
 
+
 let newMoodEntry = {
     title: title,
     content: content,
     score: mood,
+    user_id: user.id
 }
+// const data = useRef(entries);
+
 
     function handleSubmit(e){
         e.preventDefault();
-        fetch('/entries', {
+        fetch('http://localhost:3000/entries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
        },
@@ -25,21 +30,27 @@ let newMoodEntry = {
        setTitle('');
        setContent('');
     }
+
     
-//   console.log(title)
-  let userEntries = user.entries
+// console.log(title)
+// console.log(user)
+// console.log(user.entries)
+// console.log(display)
   
-
-
-   
-
+let display = [...entries].reverse();
+  let userEntriesMap = display.map((entry) =>{
+    return (
+    <EntryCard key={entry.id} entries={entries} setEntries={setEntries} entry={entry} mood={mood} setMood={setMood} /> 
+    )
+  })
+  
 
     return(
         <div>
             <h2>What is on your mind, {user.username}?</h2>
             <form className="new-entry-form" onSubmit={handleSubmit}>
-                <input className="mood-title" type="text" placeholder="Enter your mood" value={title} onChange={(e) => setTitle(e.target.value)}/>
-                <textarea className="mood-note" placeholder="Enter a note" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+                <input  className="mood-title" type="text" placeholder="Enter your mood" value={title} onChange={(e) => setTitle(e.target.value)}/>
+                <textarea  className="mood-note" placeholder="Enter a note" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
                 <button type="submit">Submit</button>
                 <select value={mood} onChange={(e) => setMood(e.target.value)}>
                     <option value="1">1</option>
@@ -50,16 +61,7 @@ let newMoodEntry = {
                 </select>
             </form>
             <div className="my-entries">
-            {userEntries.map((entry) => {
-              return(
-                <>
-                <h3>{entry.title}</h3>
-                <p>{entry.content}</p>
-                </>
-              )
-            }
-
-            )}
+                {userEntriesMap}
             </div>
         </div>
         
