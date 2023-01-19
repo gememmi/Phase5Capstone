@@ -18,13 +18,14 @@ class EntriesController < ApplicationController
         # newEntry = @current_user.entries.create!(entry_params.merge(mood_rating_id: mood_rating.id))
         # newEntry = @current_user.entries.create!(entry_params.merge(:user_id => user.id))
        
-        render json: newEntry, status: :created
+        render json:{ mood_rating: MoodRatingSerializer.new(mood_rating) , entry: EntrySerializer.new(newEntry) }, status: :created
     end
 
     def update
         entry = @current_user.entries.find(params[:id])
         entry.update(entry_params)
-        render json: entry, status: :updated
+        entry.mood_rating.update(score: params[:score])
+        render json:{ mood_rating: MoodRatingSerializer.new(entry.mood_rating), entry: EntrySerializer.new(entry) }
     end
 
     def destroy

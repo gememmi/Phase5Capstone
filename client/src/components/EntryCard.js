@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
-export default function EntryCard({entry, entries, setEntries}){
+export default function EntryCard({entry, entries, setEntries, setMoodData, moodData}){
 const [ showInput, setShowInput] = useState(true)
-const [ editTitle, setEditTitle] = useState('')
-const [ editContent, setEditContent] = useState('')
-const [ editMood, setEditMood] = useState('')
+const [ editTitle, setEditTitle] = useState(entry.title)
+const [ editContent, setEditContent] = useState(entry.content)
+const [ editMood, setEditMood] = useState(entry.mood_rating)
 
 
 function handleDelete(){
+    
     fetch(`/entries/${entry.id}`, {
         method:'DELETE',
     })
@@ -16,7 +17,51 @@ function handleDelete(){
     })
     setEntries(updatedArray)
 }
-function handlePatch(){
+
+
+function handlePatch(e){
+    e.preventDefault()
+    // console.log(editMood)
+    const newE = entries.filter((e) =>{
+        return e.id === entry.id
+    }
+    )
+    console.log(newE[0])
+    const updatedEntries = [...entries]
+    const index = updatedEntries.indexOf(newE[0])
+    console.log(updatedEntries)
+
+    const updatedMoodData = [...moodData]
+
+    const entryMood = {
+        created_at: newE[0].mood_rating.created_at,
+        id: newE[0].mood_rating.id,
+        score: newE[0].mood_rating.score
+
+    }
+   
+
+
+    console.log(moodData[0], entryMood)
+     
+    const filteredMoodData = moodData.filter(m => {
+        return m.score === newE[0].mood_rating.score
+    })
+    const moodDataIndex = updatedMoodData.indexOf(filteredMoodData[0])
+    // console.log(filteredMoodData)
+    // console.log(moodDataIndex)
+
+    // updatedEntries.forEach((e, i) => {
+    //     console.log(i)
+    //     if(e.id === entry.id) {
+    //          setIndex(i)
+    //          return true
+    //     }
+    // })
+
+
+    console.log(index)
+    
     fetch(`/entries/${entry.id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json', 
@@ -26,6 +71,21 @@ function handlePatch(){
         content: editContent,
         score: editMood
     } )
+
+    })
+    .then((r) => r.json())
+    .then(data => {
+        updatedEntries[index] = data.entry
+        // console.log(updatedEntries)
+
+
+        setEntries(updatedEntries)
+
+        // console.log(updatedEntries)
+        updatedMoodData[moodDataIndex] = data.mood_rating
+        setMoodData(updatedMoodData)
+
+
     })
 
 }

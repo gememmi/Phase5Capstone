@@ -9,7 +9,7 @@ export default function Graph({ moodData, setMoodData, user}){
 
     // console.log(moodData[0].users[0].id)
     // console.log(moodData[0].score)
-    // console.log(moodData)
+    console.log(moodData)
     
 
 

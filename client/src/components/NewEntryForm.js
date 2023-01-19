@@ -17,8 +17,8 @@ let newMoodEntry = {
 // const data = useRef(entries);
 
 
-    function handleSubmit(e){
-        e.preventDefault();
+    function handleSubmit(){
+        // e.preventDefault();
         fetch('http://localhost:3000/entries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
@@ -27,9 +27,9 @@ let newMoodEntry = {
        })
        .then((r) => r.json())
        .then(data =>  {
-        setEntries([...entries, data])
+        setEntries([...entries, data.entry])
     
-        setMoodData(moodData => [...moodData, data])
+        setMoodData(moodData => [...moodData, data.mood_rating])
         // console.log(data)
     })
        setTitle('');
@@ -45,7 +45,7 @@ let newMoodEntry = {
 let display = [...entries].reverse();
   let userEntriesMap = display.map((entry) =>{
     return (
-    <EntryCard key={entry.id} entries={entries} setEntries={setEntries} entry={entry} mood={mood} setMood={setMood} /> 
+    <EntryCard key={entry.id} entries={entries} setEntries={setEntries} entry={entry} mood={mood} setMood={setMood} setMoodData={setMoodData} moodData={moodData}/> 
     )
   })
   
