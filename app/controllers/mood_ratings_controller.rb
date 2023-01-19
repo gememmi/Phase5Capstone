@@ -7,13 +7,12 @@ class MoodRatingsController < ApplicationController
     end
 
     def show
-        mood = MoodRating.find(id: params[:id])
+        mood = MoodRating.find_by(id: params[:id])
         render json: mood
-    
     end
 
     def create
-    #    newMood = @current_user.mood_ratings.create!(mood_rating_params)
+    #newMood = @current_user.mood_ratings.create!(mood_rating_params)
     newMood = MoodRating.create!(mood_rating_params)
     render json: newMood, status: :created
     end
@@ -22,7 +21,6 @@ class MoodRatingsController < ApplicationController
         mood = MoodRating.find(id: params[:id])
         mood.update(mood_rating_params)
         render json: mood, status: :updated
-
     end
 
     def destroy
@@ -34,6 +32,6 @@ class MoodRatingsController < ApplicationController
     private
 
     def mood_rating_params
-        params.permit(:score)
+        params.permit(:score, :created_at)
     end
 end

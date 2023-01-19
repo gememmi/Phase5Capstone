@@ -10,6 +10,7 @@ import NewEntryForm from './NewEntryForm';
 
 
 
+
 function App() {
   const [user, setUser] = useState(null)
   const [entries, setEntries] = useState([])
@@ -28,10 +29,12 @@ function App() {
     fetch("/mood_ratings").then((r) => {
       if(r.ok) {
         r.json().then((data) => setMoodData(data));
-      }
+      } 
     })
+    // return setMoodData([])
   },[])
- console.log(moodData)
+  console.log(moodData)
+
 
 
   useEffect(() => {
@@ -57,6 +60,7 @@ function App() {
         r.json().then((data) => setUser(data));
       }
     })
+    // return setUser({})
   },[])
 
   
@@ -70,8 +74,8 @@ function App() {
       {affirmation}
       <Routes>
         <Route path="/intentions" element={<IntentionsForm user={user} intentions={intentions} setIntentions={setIntentions}/>} />
-        <Route path="/graph" element={<Graph moodData={moodData} setMoodData={setMoodData}/>}/>
-        <Route path="/new-entry" element={<NewEntryForm user={user} entries={entries} setEntries={setEntries}/>} />
+        <Route path="/graph" element={<Graph moodData={moodData} setMoodData={setMoodData} user={user} />}/>
+        <Route path="/new-entry" element={<NewEntryForm user={user} entries={entries} setEntries={setEntries} setMoodData={setMoodData} moodData={moodData}/>} />
       </Routes>
 
     </div>

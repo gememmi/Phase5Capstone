@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import EntryCard from './EntryCard';
 
 
-export default function NewFormEntry({user, entries, setEntries}){
+export default function NewFormEntry({user, entries, setEntries, setMoodData, moodData}){
 const [title, setTitle] = useState('')
 const [content, setContent] = useState('')
 const [mood, setMood] = useState('1')
@@ -26,7 +26,12 @@ let newMoodEntry = {
        body: JSON.stringify(newMoodEntry)
        })
        .then((r) => r.json())
-       .then(data =>  setEntries([...entries, data]))
+       .then(data =>  {
+        setEntries([...entries, data])
+    
+        setMoodData(moodData => [...moodData, data])
+        // console.log(data)
+    })
        setTitle('');
        setContent('');
     }
