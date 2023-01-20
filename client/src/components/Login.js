@@ -10,18 +10,22 @@ const [showLogin, setShowLogin]= useState(true)
     return(
       <div className= "login">
         <div className="title">
-        <h1>Star Bright</h1>
+        <h1 className="title">Star Bright</h1>
         </div>
+        <img className="star"src="./IMAGES/STARshollow.png"/>
         {showLogin ?
+        <>
+
        <div className="login-form">
          <LoginForm setUser={setUser} user={user}/>
             <br />
-            <p>Want to join and create an account?
+            <p className="join">Want to join and create an account?
             <button id="signup-btn" onClick={() => setShowLogin(false)}>
                  Sign up
             </button>
             </p>            
        </div>
+       </>
        :
        <div className="signup-form">
         <SignupForm setUser={setUser} user={user} />

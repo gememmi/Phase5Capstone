@@ -40,9 +40,9 @@ function LoginForm({setUser, user}){
     <div className="login-screen">
         <h1>LOG IN</h1>
     <div className="login-form">
-    <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)}/>
-        <input type="text" placeholder="Password" required value={password} onChange={(e) => setPassword(e.target.value)}/>
+    <form className="login-form" onSubmit={handleSubmit}>
+        <input type="text" className="login-input" placeholder="Username"  autocomplete="username"required value={username} onChange={(e) => setUsername(e.target.value)}/>
+        <input type="password" className="login-input"placeholder="Password" autocomplete="current-password" required value={password} onChange={(e) => setPassword(e.target.value)}/>
         <br/>
         <button type="submit">LOG IN</button>
     </form>

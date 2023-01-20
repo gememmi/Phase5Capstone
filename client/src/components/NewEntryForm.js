@@ -44,6 +44,7 @@ let newMoodEntry = {
   
 let display = [...entries].reverse();
   let userEntriesMap = display.map((entry) =>{
+    
     return (
     <EntryCard key={entry.id} entries={entries} setEntries={setEntries} entry={entry} mood={mood} setMood={setMood} setMoodData={setMoodData} moodData={moodData}/> 
     )

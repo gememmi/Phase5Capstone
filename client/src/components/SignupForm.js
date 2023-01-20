@@ -38,8 +38,11 @@ function handleSubmit(e){
 console.log(avatar)
 
     return (
+        
         <div className="sigup-screen">
+            
             <h1>Sign Up</h1>
+            
         <div className="signup-form">
         <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)}/>
@@ -48,6 +51,7 @@ console.log(avatar)
         <input type="text" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)}/>
         <input type="text" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)}/>
         <select  value={avatar} label="avatar" onChange={(e)=> setAvatar(e.target.value)}>
+            <option>Choose avatar</option>
             <option value="cloud">Cloud</option>
             <option value="Thunder">Thunder</option>
             <option value="Rainbow">Rainbow</option>

@@ -6,6 +6,7 @@ import Login from './Login';
 import IntentionsForm from './IntentionsForm';
 import Graph from './Graph';
 import NewEntryForm from './NewEntryForm';
+import WelcomePage from './WelcomePage';
 
 
 
@@ -17,7 +18,17 @@ function App() {
   const [affirmation, setAffirmation] = useState("")
   const [intentions, setIntentions] = useState([])
   const [moodData, setMoodData] = useState([])
- 
+  
+  
+  
+  useEffect(() => {
+    fetch("/me").then((r) => {
+      if(r.ok) {
+        r.json().then((data) => setUser(data));
+      }
+    })
+    // return setUser({})
+  },[])
 
   useEffect(() => {
     fetch("/affirmations")
@@ -33,7 +44,7 @@ function App() {
     })
     // return setMoodData([])
   },[])
-  console.log(moodData)
+  // console.log(moodData)
 
 
 
@@ -44,6 +55,8 @@ function App() {
   }, []);
   // console.log(entries)
   // console.log(user)
+
+
   
   
   useEffect(() => {
@@ -54,14 +67,7 @@ function App() {
 
 
 
-  useEffect(() => {
-    fetch("/me").then((r) => {
-      if(r.ok) {
-        r.json().then((data) => setUser(data));
-      }
-    })
-    // return setUser({})
-  },[])
+
 
   
   if (!user) return <Login setUser={setUser} user={user} />;
@@ -73,6 +79,7 @@ function App() {
       <Header setUser={setUser} user={user} moodData={moodData} setMoodData={setMoodData}/>
       {affirmation}
       <Routes>
+        <Route path="/me" element ={<WelcomePage user={user} />}/>
         <Route path="/intentions" element={<IntentionsForm user={user} intentions={intentions} setIntentions={setIntentions}/>} />
         <Route path="/graph" element={<Graph moodData={moodData} setMoodData={setMoodData} user={user} />}/>
         <Route path="/new-entry" element={<NewEntryForm user={user} entries={entries} setEntries={setEntries} setMoodData={setMoodData} moodData={moodData}/>} />
