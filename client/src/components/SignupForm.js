@@ -39,7 +39,7 @@ console.log(avatar)
 
     return (
         
-        <div className="sigup-screen">
+        <div className="signup-screen">
             
             <h1>Sign Up</h1>
             
