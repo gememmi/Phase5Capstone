@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Chart} from 'chart.js/auto'
 import { Line } from 'react-chartjs-2';
+import { format } from 'date-fns'
+import {strftime} from 'strftime';
 
 
 
@@ -10,11 +12,15 @@ export default function Graph({ moodData, setMoodData, user}){
     // console.log(moodData[0].users[0].id)
     // console.log(moodData[0].score)
     console.log(moodData)
-    
+  // console.log(strftime('%d-%m-%Y %H:%M', new Date(moodData[0].created_at)))
 
 
 if (moodData.length === 0) {return null}
-const dataLabel = moodData.map(el =>  `${el.created_at}`)
+const dataLabel = moodData.map(el =>  {
+
+
+ return `${el.date}`
+})
 const dataData = moodData.map(el =>  `${el.score}`)
     const state = {
         labels: dataLabel,
@@ -32,8 +38,9 @@ const dataData = moodData.map(el =>  `${el.score}`)
       }
 
     return(
-        <div>
+        <div className="graph">
        <Line
+          className="line"
           data={state}
           options={{
             title:{

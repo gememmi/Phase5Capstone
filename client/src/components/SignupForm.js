@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 function SignupForm({setUser, user }){
@@ -6,9 +7,10 @@ function SignupForm({setUser, user }){
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
-    const [phone, setPhone] = useState('')
+    // const [phone, setPhone] = useState('')
     const [errors, setErrors] = useState('')
-    const [avatar, setAvatar] = useState('')
+    // const [avatar, setAvatar] = useState('')
+    const navigate = useNavigate();
 
 function handleSubmit(e){
     e.preventDefault();
@@ -23,8 +25,8 @@ function handleSubmit(e){
             password,
             password_confirmation: passwordConfirm,
             email,
-            phone_num: phone,
-            avatar: avatar
+            // phone_num: phone,
+            // avatar: avatar
         }),
     }).then((r) => {
       if (r.ok) {
@@ -33,6 +35,7 @@ function handleSubmit(e){
         r.json().then((err) => setErrors(err.errors));
             (console.log(errors))
       }
+      navigate("/welcome")
     });
 }
 console.log(avatar)
@@ -41,16 +44,45 @@ console.log(avatar)
         
         <div className="signup-screen">
             
-            <h1>Sign Up</h1>
+            <h1>SIGN UP</h1>
             
         <div className="signup-form">
         <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)}/>
-        <input type="text" placeholder="Password" required value={password} onChange={(e) => setPassword(e.target.value)}/>
-        <input type="text" placeholder="Password-Confirmation"required value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)}/>
-        <input type="text" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <input type="text" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)}/>
-        <select  value={avatar} label="avatar" onChange={(e)=> setAvatar(e.target.value)}>
+
+        <input className="signup-input"
+        type="text" 
+        placeholder="Username" 
+        required value={username} 
+        onChange={(e) => setUsername(e.target.value)}
+        />
+        <input  className="signup-input"
+        type="password" 
+        placeholder="Password" 
+        required value={password} 
+        onChange={(e) => setPassword(e.target.value)}
+        />
+        <input className="signup-input"
+        type="password"
+         placeholder="Password-Confirmation"
+         required value={passwordConfirm} 
+         onChange={(e) => setPasswordConfirm(e.target.value)}
+         />
+        <input className="signup-input"
+        type="text" 
+        placeholder="Email" 
+        required value={email} 
+        onChange={(e) => setEmail(e.target.value)}
+        />
+        <input className="signup-input"
+        type="text" 
+        placeholder="Phone Number" 
+        value={phone} 
+        onChange={(e) => setPhone(e.target.value)}
+        />
+        <select className="signup" value={avatar} 
+        abel="avatar" 
+        onChange={(e)=> setAvatar(e.target.value)}
+        >
             <option>Choose avatar</option>
             <option value="cloud">Cloud</option>
             <option value="Thunder">Thunder</option>
@@ -64,7 +96,7 @@ console.log(avatar)
         <button value={avatar} onChange={(e) => setAvatar(e.target.value)} name="rainbow">Rainbow</button>
         <button value={avatar} onChange={(e) => setAvatar(e.target.value)} name="sun">Sun</button>
         <button value={avatar} onChange={(e) => setAvatar(e.target.value)} name="moon">Shooting Star</button> */}
-        <button type="submit">Submit</button>
+        <button className="signup-submit"type="submit">Submit</button>
         </form>
         </div>
 

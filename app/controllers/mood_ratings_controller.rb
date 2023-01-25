@@ -1,5 +1,5 @@
 class MoodRatingsController < ApplicationController
-    skip_before_action :authorize, only: [:create,:show]
+    skip_before_action :authorize, only: :create
 
     def index
         moods = @current_user.mood_ratings.all

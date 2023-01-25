@@ -11,10 +11,6 @@ function LoginForm({setUser, user}){
 
  const navigate = useNavigate();
 
-
-
-
-
  function handleSubmit(e){
     e.preventDefault();
     fetch('/login', {
@@ -27,13 +23,14 @@ function LoginForm({setUser, user}){
         if(r.ok){
             r.json().then((data) => {
                 setUser(data)
-                navigate("/me")
+                
             });
                 
         } else {
             r.json().then((data) => setErrors(data.errors));
             console.log(errors)
         }
+        navigate("/welcome")
     });
  }
 

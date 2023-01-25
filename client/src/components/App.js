@@ -7,6 +7,7 @@ import IntentionsForm from './IntentionsForm';
 import Graph from './Graph';
 import NewEntryForm from './NewEntryForm';
 import WelcomePage from './WelcomePage';
+import LoginForm from './LoginForm';
 
 
 
@@ -76,13 +77,14 @@ function App() {
 
   return (
     <div className='App'>
-      <Header setUser={setUser} user={user} moodData={moodData} setMoodData={setMoodData}/>
-      {affirmation}
+      <Header setUser={setUser} user={user} moodData={moodData} setMoodData={setMoodData} affirmation={affirmation}/>
+      {/* <p> &#10024; <i>{affirmation}</i> &#10024;</p> */}
       <Routes>
-        <Route path="/me" element ={<WelcomePage user={user} />}/>
+        <Route path="/welcome" element ={<WelcomePage user={user} />}/>
         <Route path="/intentions" element={<IntentionsForm user={user} intentions={intentions} setIntentions={setIntentions}/>} />
         <Route path="/graph" element={<Graph moodData={moodData} setMoodData={setMoodData} user={user} />}/>
         <Route path="/new-entry" element={<NewEntryForm user={user} entries={entries} setEntries={setEntries} setMoodData={setMoodData} moodData={moodData}/>} />
+        <Route path="/login" element={<LoginForm/>} />
       </Routes>
 
     </div>

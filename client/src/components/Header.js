@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
 
-function Header({ setUser, user, moodData, setMoodData}){
+function Header({ setUser, user, moodData, setMoodData, affirmation}){
   const navigate = useNavigate();
     
   function handleLogoutClick() {
@@ -11,25 +11,35 @@ function Header({ setUser, user, moodData, setMoodData}){
             navigate("/login")
           }
         });
-    }
+    } 
 
 
-    
-
+   
 
     return(
         <div className="header">
-          <h3>Star Bright</h3>
-            <NavLink className="nav-link" to="/new-entry" user={user} end>
-              <button>New Entry</button>
+          <div>
+          <h1>Star Bright</h1>
+    
+          </div>
+          <div className="nav-div">
+          <NavLink to='/welcome'>
+              <button className="nav-link">Welcome</button>
             </NavLink>
-            <NavLink className="nav-link" to="/graph" end>
-              <button>My Mood Graph</button>
+            <NavLink to="/new-entry" user={user} end>
+              <button className="nav-link" >Moods</button>
             </NavLink>
-            <NavLink className="nav-link" to="/intentions">
-              <button>My Daily Intentions</button>
+            <NavLink to="/graph" end>
+              <button className="nav-link">My Mood Graph</button>
             </NavLink>
-          <button onClick={handleLogoutClick}>Logout</button>
+            <NavLink to="/intentions">
+              <button className="nav-link">My Daily Intentions</button>
+            </NavLink>
+          <NavLink to="/login">
+          <button className="nav-link"onClick={handleLogoutClick}>Logout</button>
+          </NavLink>
+          </div>
+          <p className="affirmation"> &#10024; <i>{affirmation}</i> &#10024;</p>
         </div>
     )
 }

@@ -102,6 +102,7 @@ function handlePatch(e){
             <p>{entry.mood_rating.score}</p>
             <button onClick={handleDelete}>Delete</button>
             </> :
+            <div className="edit-div">
             <form onSubmit={handlePatch}>
                 <input type= "type" 
                 placeholder="Title" 
@@ -111,8 +112,9 @@ function handlePatch(e){
                  <input type="type"
                  placeholder="content"
                  value={editContent}
-                 onChange={(e) => setEditContent(e.target.value)} />
-                 <button type="submit">Edit</button>
+                 onChange={(e) => setEditContent(e.target.value)}
+                  />
+                 <button type="submit" onClick={() => setShowInput(!showInput)}>Edit</button>
                  <select value={editMood} onChange={(e) => setEditMood(e.target.value)}>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -121,6 +123,7 @@ function handlePatch(e){
                     <option value="5">5</option>
                  </select> 
             </form>
+            </div>
             }
 
             </div>

@@ -29,12 +29,15 @@ export default function IntentionCard({user, intentions, setIntentions, intent})
   }
   
 return (
-<div onDoubleClick={() => setShowInput(!showInput)}>
+<div className="intent-card" onDoubleClick={() => setShowInput(!showInput)}>
     {showInput ?
     <>
-    <p>{intent.content}</p>
+    <div>
+    <li>{intent.content}</li>
+    </div>
     <button onClick={handleDelete}>Delete</button> 
-    </>  :
+    </>  
+    :
   <form onSubmit={handlePatch}>
     <input type="type"
      placeholder="Edit Intention" 
