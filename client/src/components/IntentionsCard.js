@@ -33,9 +33,9 @@ return (
     {showInput ?
     <>
     <div>
-    <li>{intent.content}</li>
+    <p> &#9734; {intent.content}</p>
     </div>
-    <button onClick={handleDelete}>Delete</button> 
+    <button className= "delete" onClick={handleDelete}>Delete</button> 
     </>  
     :
   <form onSubmit={handlePatch}>
@@ -44,7 +44,7 @@ return (
      value={edit} 
      onChange={(e) => setEdit(e.target.value)}
      />
-    <button type="submit">Edit</button>
+    <button className="delete" type="submit">Edit</button>
 </form> }
 </div>
 )

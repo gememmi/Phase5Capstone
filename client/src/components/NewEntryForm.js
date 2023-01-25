@@ -61,6 +61,7 @@ let newMoodEntry = {
     { showInput ?
     <div className="entry-div">
     <h2>What is on your mind, {user.username}?</h2>
+    
     <form className="new-entry-form" onSubmit={handleSubmit}>
         <input  className="mood-title" type="text" placeholder="Enter your mood" value={title} onChange={(e) => setTitle(e.target.value)}/>
         <textarea  className="mood-note" placeholder="Enter a note" value={content} onChange={(e) => setContent(e.target.value)}></textarea>

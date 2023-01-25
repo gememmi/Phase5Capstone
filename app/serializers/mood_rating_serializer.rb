@@ -3,8 +3,8 @@ class MoodRatingSerializer < ActiveModel::Serializer
 
   has_many :entries
   has_many :users, through: :entries
-
+  
   def date
-     object.created_at.strftime('%b %w %Y')
-  end
+    object.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%b %d %Y, %I:%M %p')
+end
 end

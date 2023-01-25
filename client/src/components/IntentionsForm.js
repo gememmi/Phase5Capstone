@@ -57,9 +57,6 @@ const intentMap = intentions?.map((intent) =>{
         </div>
     </div>
     
-{/* <div className="intent-dash">
-
-</div> */}
 </>
   )
 }

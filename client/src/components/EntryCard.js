@@ -7,6 +7,7 @@ const [ editContent, setEditContent] = useState(entry.content)
 const [ editMood, setEditMood] = useState(entry.mood_rating)
 
 
+
 function handleDelete(){
     
     fetch(`/entries/${entry.id}`, {
@@ -90,6 +91,8 @@ function handlePatch(e){
 
 }
 
+console.log(entry.date)
+console.log(entry.created_at)
 
 
 
@@ -100,7 +103,10 @@ function handlePatch(e){
             <h3>{entry.title}</h3>
             <p>{entry.content}</p>
             <p>{entry.mood_rating.score}</p>
-            <button onClick={handleDelete}>Delete</button>
+            <p>{entry.date}</p>
+            <div id="delete">
+            <button className="delete" onClick={handleDelete}>Delete</button>
+            </div>
             </> :
             <div className="edit-div">
             <form onSubmit={handlePatch}>

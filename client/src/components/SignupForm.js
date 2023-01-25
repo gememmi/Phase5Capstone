@@ -38,7 +38,7 @@ function handleSubmit(e){
       navigate("/welcome")
     });
 }
-console.log(avatar)
+
 
     return (
         
@@ -73,7 +73,7 @@ console.log(avatar)
         required value={email} 
         onChange={(e) => setEmail(e.target.value)}
         />
-        <input className="signup-input"
+        {/* <input className="signup-input"
         type="text" 
         placeholder="Phone Number" 
         value={phone} 
@@ -89,7 +89,7 @@ console.log(avatar)
             <option value="Rainbow">Rainbow</option>
             <option value="Sun">Sun</option>
             <option value="Moon">Moon</option>
-        </select>
+        </select> */}
         {/* TRIED TO DO BUTTOSN BUT THEY DIDNT WORK :/ */}
         {/* <button value={avatar} onChange={(e) => setAvatar(e.target.value)} name="cloud">Cloud</button>
         <button value={avatar} onChange={(e) => setAvatar(e.target.value)} name="thunder">Thunder</button>
