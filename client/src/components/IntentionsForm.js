@@ -5,16 +5,14 @@ import IntentionsCard from './IntentionsCard';
 export default function IntentionsForm({user, intentions, setIntentions}){
 const [ contents, setContents] = useState('')
 
-
-
-let newIntent = {
+  let newIntent = {
     content: contents
-}
+  }
 
-
-function clear(){
+  function clear(){
     setContents('');
-}
+  }
+
   function handleSubmit(e){
     e.preventDefault();
     fetch('/intentions', {
@@ -30,11 +28,6 @@ function clear(){
     clear()
   }
 
- 
-
-
-
-
 
 const intentMap = intentions?.map((intent) =>{
    return (
@@ -49,7 +42,13 @@ const intentMap = intentions?.map((intent) =>{
     <div className="intentions">
         <h2>What intentions would you like to set for the day, {user.username}?</h2>
         <form className="intent-form" onSubmit={handleSubmit}>
-            <input type="text" className="new-intent" placeholder=" Add New Intention" value={contents} onChange={(e) => setContents(e.target.value)}></input>
+            <input type="text" 
+            className="new-intent" 
+            placeholder=" Add New Intention" 
+            value={contents} 
+            onChange={(e) => setContents(e.target.value)}
+            >
+            </input>
             <button type="submit" className="new-intent-btn"  >Submit</button>
         </form>
         <div className="map">
