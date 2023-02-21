@@ -42,8 +42,8 @@ function LoginForm({setUser, user}){
         <h1>LOG IN</h1>
     <div className="login-form">
     <form className="login-form" onSubmit={handleSubmit}>
-        <input type="text" className="login-input" placeholder="Username"  autocomplete="username"required value={username} onChange={(e) => setUsername(e.target.value)}/>
-        <input type="password" className="login-input"placeholder="Password" autocomplete="current-password" required value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <input type="text" className="login-input" placeholder="Username"  autoComplete="username" required value={username} onChange={(e) => setUsername(e.target.value)}/>
+        <input type="password" className="login-input"placeholder="Password" autoComplete="current-password" required value={password} onChange={(e) => setPassword(e.target.value)}/>
         <br/>
         <button type="submit" className="lgn-btn">LOG IN</button>
     </form>

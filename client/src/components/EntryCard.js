@@ -120,7 +120,7 @@ console.log(entry.created_at)
                  value={editContent}
                  onChange={(e) => setEditContent(e.target.value)}
                   />
-                 <button type="submit" onClick={() => setShowInput(!showInput)}>Edit</button>
+                 <button type="submit" >Edit</button>
                  <select value={editMood} onChange={(e) => setEditMood(e.target.value)}>
                     <option value="1">1</option>
                     <option value="2">2</option>

@@ -7,7 +7,7 @@ body {
   color: rgba(102, 92, 100, 1);
   overflow: hidden;
   overflow-y: scroll;
-  background-image: url('/Users/emilydaniels/Development/code/phase-5/Phase5Capstone/client/public/IMAGES/SkyMostlyPink.jpg');
+  background-image: url('/Users/emilydaniels/Documents/FLATIRON/FISprojects/Phase5Capstone/client/public/IMAGES/SkyMostlyPink.jpg');
   background-size:cover;
 }
 
@@ -94,7 +94,7 @@ button {
 
 button.delete{
 width: 4rem;
-margin-top: auto;
+margin-top: 1rem;
 font-size: .5rem;
 
 }
@@ -148,16 +148,19 @@ i{
 
 input.signup-input{
 letter-spacing: .5rem;
-background-color: #A88EAF;
+background: transparent;
 opacity: .5; 
 outline:none;
 border: none;
 border-bottom: 2px solid #555 ;
 display: block;
-margin-top: 4rem;
+margin-top: 1rem;
+margin-left:auto;
+margin-right: auto;
 font-family: 'Overpass Mono', monospace;
-color: rgba(102, 92, 100, 1);
+color: white;
 width: 80%;
+height: 3rem;
 }
 
 input.signup-input::placeholder{
@@ -183,12 +186,13 @@ select {
 
 }
 div.header{
-  padding: 10px 15px;
+  padding: 1rem;
   background-color:rgba(170, 131, 164, 0.63);
   position:sticky;
   width: 100%;
   top:0;
   z-index:1;
+  
 }
 div.header h1{
   color: white;
@@ -203,18 +207,22 @@ div.welcome-page{
 position: absolute;
 margin: auto;
 text-align: center;
-width:50%;
-top: 40%;
-left: 25%;
+width:50vw;
+top: 40vh;
+left: 25vw;
 color: black;
-/* line-height: 1.75rem;
-background-color:#AA83A4  ; */
-
+font-weight: bold;
+line-height: 1.75rem;
 }
+
+
 div.nav-div{
-  display: inline-block;
-  justify-content: center;
-  margin-left: 170px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left: 29vw;
+  margin-right: 29vw;
+
 }
 .nav-link{
   width: 12rem;
@@ -236,15 +244,16 @@ div.graph {
 
 button.entry{
   position: absolute;
-  top: 33%;
-  left: 50%;
+  top: 33vh;
+  left: 50vw;
   transform: translate(-50%, -50%);
+  width: 20rem;
+  height: 5rem;
 }
 div.entry-div{
- position: fixed;
- z-index: 1;
- top: 30%;
- left: 50%;
+ position: absolute;
+ top: 30vh;
+ left: 50vw;
  transform: translate(-50%, -50%);
  background-color: #fff;
  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -284,10 +293,11 @@ div.entry-div select{
   width: 100%;
 }
 div.my-entries{
+  margin-left: 30%;
   width: 40%;
   position: absolute;
-  margin-left: 30%;
-  margin-top: 5%;
+  top: 40vh;
+  left: 3vw;
 
 }
 .submit-btn{
@@ -295,26 +305,26 @@ div.my-entries{
 }
 
 div.entry-card{
+  width: 40rem;
   border: 1px solid black;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  width: 75%;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  position: relative;
-  margin-left: 12%;
   background: rgba(255, 255, 255, 0.50);
   text-align: center;
   border-radius: 5%;
   color:black;
- 
 }
 
 div.intentions{
-  position:absolute;
-  /* top:50%; */
-  margin-left:22%;
+  /* position:absolute;
+  top: 60vh;
+  left: 50vw;
+  transform: translate(-50%, -50%) */
+
+  /* margin-left:22%;
   margin-right: auto;
-  margin-bottom: 25%;
+  margin-bottom: 25%; */
   
 }
 .intentions h2{
