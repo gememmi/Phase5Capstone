@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import EntryCard from './EntryCard';
-import EntryDash from './EntryDash'
+import EntryDash from './EntryDash';
+import { useNavigate } from 'react-router-dom'
 
 
 export default function NewFormEntry({user, entries, setEntries, setMoodData, moodData}){
@@ -8,19 +9,26 @@ const [title, setTitle] = useState('')
 const [content, setContent] = useState('')
 const [mood, setMood] = useState('1')
 const [showInput, setShowInput] = useState(false)
+const navigate = useNavigate();
+
+// let newMoodEntry = {
+//     title: title,
+//     content: content,
+//     score: mood,
+//     user_id: user.id
+// }
+// const data = useRef(entries);
 
 
-let newMoodEntry = {
+function handleSubmit(e){
+    e.preventDefault();
+
+    let newMoodEntry = {
     title: title,
     content: content,
     score: mood,
     user_id: user.id
-}
-// const data = useRef(entries);
-
-
-    function handleSubmit(){
-        // e.preventDefault();
+    }
         fetch('http://localhost:3000/entries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
@@ -29,34 +37,34 @@ let newMoodEntry = {
        })
        .then((r) => r.json())
        .then(data =>  {
-        setEntries([...entries, data.entry])
-    
+        // setEntries(entries => [...entries, data.entry])
+        setEntries(prevEntries => [...prevEntries, data.entry]
+          );
         setMoodData(moodData => [...moodData, data.mood_rating])
         // console.log(data)
+        // navigate("/new-entry")
+        setTitle('');
+        setContent('');
+        setMood('1');
+    
     })
-       setTitle('');
-       setContent('');
-    }
+    .catch(error => {
+        console.error('Error creating new entry:', error);
+      });
 
+    }
+    //    setTitle('');
+    //    setContent('');
     
-// console.log(title)
-// console.log(user)
-// console.log(user.entries)
-// console.log(display)
-  
-// let display = [...entries].reverse();
-//   let userEntriesMap = display.map((entry) =>{
-    
-//     return (
-//     <EntryCard key={entry.id} entries={entries} setEntries={setEntries} entry={entry} mood={mood} setMood={setMood} setMoodData={setMoodData} moodData={moodData}/> 
-//     )
-//   })
-  
 
     return(
         <div>
             <div className="btn-div">
-    <button className="entry" onClick={() => setShowInput(!showInput)}>{ showInput ? "Show All My Moods" : "Create new Entry"}</button>
+                <button className="entry" 
+                onClick={() => setShowInput(!showInput)}
+                >
+                { showInput ? "Show All My Moods" : "Create new Entry"}
+                </button>
     </div>
     { showInput ?
     <div className="entry-div">

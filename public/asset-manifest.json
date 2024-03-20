@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2bc1d0f1.css",
+    "main.js": "/static/js/main.562b8f0f.js",
+    "static/js/787.c229d825.chunk.js": "/static/js/787.c229d825.chunk.js",
+    "static/media/SkyMostlyPink.jpg": "/static/media/SkyMostlyPink.54ff6acda5ae12a578fe.jpg",
+    "index.html": "/index.html",
+    "main.2bc1d0f1.css.map": "/static/css/main.2bc1d0f1.css.map",
+    "main.562b8f0f.js.map": "/static/js/main.562b8f0f.js.map",
+    "787.c229d825.chunk.js.map": "/static/js/787.c229d825.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2bc1d0f1.css",
+    "static/js/main.562b8f0f.js"
+  ]
+}

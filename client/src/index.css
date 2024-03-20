@@ -244,8 +244,9 @@ div.graph {
 
 button.entry{
   position: absolute;
-  top: 35vh;
+  top: 17rem;
   left: 50vw;
+  margin-bottom: 2rem;
   transform: translate(-50%, -50%);
   width: 20rem;
   height: 5rem;
@@ -293,11 +294,11 @@ div.entry-div select{
   width: 100%;
 }
 div.my-entries{
-  margin-left: 30%;
-  width: 40%;
+  margin-left: 25vw;
+  width: 40vw;
   position: absolute;
-  top: 40vh;
-  left: 3vw;
+  top: 20rem;
+  left: 1rem;
 
 }
 .submit-btn{

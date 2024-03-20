@@ -12,8 +12,6 @@ class UsersController < ApplicationController
       #   UserMailer.welcome_email(@user).deliver_now
       # end
       render json: @user, status: :created
-   
-
     end 
     
     def show 
